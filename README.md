@@ -1,2 +1,2 @@
-# POSM
-Portfolio Optimisation with Spectral Measures
+# Portfolio Optimisation with Spectral Measures
+
