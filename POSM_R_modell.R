@@ -3,19 +3,15 @@
 ## questions:
 # why always state 66 for cran
 # how to automatically detect path
-# how to write the sum in intelligent way
 
 # load libraries
-install.packages("readxl")
-install.packages("lpSolve")
-install.packages("xlsx")
 library("readxl")
 library("lpSolve")
 library("xlsx")
 
 # load data
-phi <- unlist(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects/portfolio_opt_raw_data.xlsx", sheet = "phi"))
-r <- as.data.frame(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects/portfolio_opt_raw_data.xlsx", sheet = "r"))
+phi <- as.numeric(unlist(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects//POSM/POSM_raw_data.xlsx", sheet = "phi")))
+r <- as.data.frame(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects//POSM/POSM_raw_data.xlsx", sheet = "r"))
 
 # USERINPUT: define end of time series
 n <- as.integer(readline(prompt="Enter end of time series: "))
@@ -34,12 +30,8 @@ for (i in 1:(n-1))
 sum_r <- rep(0, m)
 av_r <- rep(0, m)
 for (i in 1:m) {
-  sum = 0
-  for (j in 1:n) {
-  sum = sum + r[j,i]
-  }
-  sum_r[i] = as.numeric(sum)
-  av_r[i] = as.numeric(sum_r[i])/n
+  sum_r[i] <- sum(r)
+  av_r[i] <- mean(r[, i])
 }
 
 # array of signs for objective function
@@ -130,5 +122,6 @@ optimum <- lp(direction="min", coeff, constr_mat,
               constr_dir, constr_rhs)
 
 # print optimum
-optimum # for displysing the minimal risk
-# optimum$solution # for displaying the portfolio weights
+print("Risk:", optimum) # for displysing the minimal risk
+x <- optimum$solution # for displaying the portfolio weights
+print("Portfolio weights", x[1:7])
