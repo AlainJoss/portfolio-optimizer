@@ -10,8 +10,8 @@ library("lpSolve")
 library("xlsx")
 
 # load data
-phi <- as.numeric(unlist(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects//POSM/POSM_raw_data.xlsx", sheet = "phi")))
-r <- as.data.frame(read_xlsx("/Users/Alain/ComputerScience/Projects/R_projects//POSM/POSM_raw_data.xlsx", sheet = "r"))
+phi <- as.numeric(unlist(read_xlsx("raw_data.xlsx", sheet = "phi")))
+r <- as.data.frame(read_xlsx("raw_data.xlsx", sheet = "r"))
 
 # USERINPUT: define end of time series
 n <- as.integer(readline(prompt="Enter end of time series: "))
