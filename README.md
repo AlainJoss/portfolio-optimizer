@@ -1,6 +1,6 @@
 # Portfolio Optimisation with Spectral Measures
 
-This repository contains an implementation of the portfolio optimisation model proposed in the paper, which I did for a friend.
+This repository contains an implementation of the portfolio optimisation model proposed in the paper (Acerbi 2002), which I wrote for a friend.
 
 The implementation takes O(n2) time to compute, which makes it not really appealing for larger problems. It turns out that there is another way to optimise non-linear objective functions of the form max(0, f(x)) that requires only O(n) computational time. Unfortunately, I discovered it way after writing this script, but this is an integral part of the learning process. The way around this inconvenience is explained below.
 
